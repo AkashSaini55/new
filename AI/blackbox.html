@@ -1,0 +1,228 @@
+
+I need to create a stylish, attractive header for an e-commerce website focused on clothes. The header should include navigation items "Home," "Fashion," "Male," and "Female" with icons. Also, I need to create item cards showing product images and necessary details such as product name, price, and maybe a short description or rating. The entire implementation should be a single HTML file with inline CSS and JavaScript for easy preview and execution. The design should be modern and visually appealing with cool fonts, colors, and layout.
+
+
+`ecommerce-clothing.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clothing E-commerce</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+  }
+
+  /* Header styling */
+  header {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  nav ul li:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+  }
+
+  nav ul li svg {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    stroke: white;
+    stroke-width: 1.5;
+    fill: none;
+    transition: stroke 0.3s ease;
+  }
+
+  nav ul li:hover svg {
+    stroke: #ffd700;
+  }
+
+  /* Main product grid */
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  .card img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    border-bottom: 1px solid #eee;
+  }
+
+  .card-content {
+    padding: 1.1rem 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #222;
+  }
+
+  .product-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.6rem;
+    flex-grow: 1;
+  }
+
+  .product-price {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #2575fc;
+  }
+
+  .product-rating {
+    color: #ffb400;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" tabindex="0" aria-label="Clothing Shop Home">Clothify</div>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li tabindex="0">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H9v4a2 2 0 0 1-2 2H3z"></path>
+        </svg>Home
+      </li>
+      <li tabindex="0">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 7h18v2H3V7zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"></path>
+        </svg>Fashion
+      </li>
+      <li tabindex="0">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 13c-3.3 0-6 1.7-6 3.8V22h12v-3.2c0-2.1-2.7-3.8-6-3.8z"></path>
+        </svg>Male
+      </li>
+      <li tabindex="0">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"></path>
+        </svg>Female
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main role="main" aria-label="Product Listings">
+  <article class="card" tabindex="0" aria-label="Blue Denim Jacket for men, priced at $69.99">
+    <img src="https://images.unsplash.com/photo-1525382455947-f319bc05d9b4?auto=format&fit=crop&w=650&q=80" alt="Blue Denim Jacket" />
+    <div class="card-content">
+      <h2 class="product-name">Blue Denim Jacket</h2>
+      <p class="product-description">Stylish men's denim jacket, perfect for casual wear.</p>
+      <div class="product-price">$69.99</div>
+      <div class="product-rating" aria-label="4.5 stars rating">★★★★☆</div>
+    </div>
+  </article>
+
+  <article class="card" tabindex="0" aria-label="Red Floral Dress for women, priced at $79.99">
+    <img src="https://images.unsplash.com/photo-1503342452485-86bbf3c101e6?auto=format&fit=crop&w=650&q=80" alt="Red Floral Dress" />
+    <div class="card-content">
+      <h2 class="product-name">Red Floral Dress</h2>
+      <p class="product-description">Elegant floral dress perfect for summer occasions.</p>
+      <div class="product-price">$79.99</div>
+      <div class="product-rating" aria-label="4 stars rating">★★★★☆</div>
+    </div>
+  </article>
+
+  <article class="card" tabindex="0" aria-label="Black Leather Boots, priced at $129.99">
+    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=650&q=80" alt="Black Leather Boots" />
+    <div class="card-content">
+      <h2 class="product-name">Black Leather Boots</h2>
+      <p class="product-description">Durable and stylish leather boots for every occasion.</p>
+      <div class="product-price">$129.99</div>
+      <div class="product-rating" aria-label="5 stars rating">★★★★★</div>
+    </div>
+  </article>
+
+  <article class="card" tabindex="0" aria-label="White Cotton Shirt for men, priced at $39.99">
+    <img src="https://images.unsplash.com/photo-1555529669-3e62200b12f9?auto=format&fit=crop&w=650&q=80" alt="White Cotton Shirt" />
+    <div class="card-content">
+      <h2 class="product-name">White Cotton Shirt</h2>
+      <p class="product-description">Lightweight and breathable cotton shirt for all-day comfort.</p>
+      <div class="product-price">$39.99</div>
+      <div class="product-rating" aria-label="4 stars rating">★★★★☆</div>
+    </div>
+  </article>
+
+</main>
+</body>
+</html>
+
+```
